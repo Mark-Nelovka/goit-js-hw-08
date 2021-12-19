@@ -20,4 +20,5 @@ player.setCurrentTime(curTime).then(function (event) {
 
 player.getVideoTitle().then(function(title) {
         console.log('title:', title);
-    });
+});
+    
