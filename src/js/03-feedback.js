@@ -7,12 +7,17 @@ const input = document.querySelector('input');
 const textArea = document.querySelector('textarea');
 
 autoLookText();
-const formData = {}
+let formData = {}
 
 form.addEventListener('input', throttle(slowTextTime, 1000));
 
-function slowTextTime(e) {
-        formData[e.target.name] = e.target.value;
+function slowTextTime() {
+    
+    formData = {
+        email: input.value,
+        message: textArea.value
+    }
+
         localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
 
@@ -21,7 +26,7 @@ function autoLookText() {
         const parseText = JSON.parse(saveText);
         if (saveText) {
                 input.value = parseText.email;
-                textArea.value = parseText.message;
+            textArea.value = parseText.message;
         }
 }
 
