@@ -2,10 +2,15 @@ const throttle = require("lodash.throttle");
 
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
-    
+
 const _saveLocalTime = function _locTime(e) {
-    localStorage.setItem('videoplayer-current-time', e.seconds);
+    if (localStorage.getItem('videoplayer-current-time') === 0) {
+        localStorage.setItem('videoplayer-current-time', 0)
+    } else {
+localStorage.setItem('videoplayer-current-time', e.seconds);
     console.log(e.seconds)
+    }
+    
 };
 
 let _upadateTime = throttle(_saveLocalTime, 2000)
